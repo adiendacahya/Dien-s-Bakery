@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Roti- Dien's Bakery</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body dan Font */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 15px 0;
+        }
+
+        header nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        header nav ul li {
+            margin: 0 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #d9534f;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: #ff6347;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Profil Perusahaan */
+        #profile {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        #profile h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #profile p {
+            font-size: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        #profile .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Profil Pemilik */
+        #owner-profile {
+            background-color: #f8f9fa;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #owner-profile h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        #owner-profile .owner-img {
+            width: 25%; /* Menyesuaikan lebar gambar sesuai dengan ukuran kontainer */
+            max-width: 250px; /* Membatasi ukuran gambar agar tidak terlalu besar */
+            height: auto; /* Menjaga rasio aspek */
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid #583130; /* Border warna merah */
+        }
+
+        #owner-profile p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Daftar Produk */
+        #produk {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product:hover {            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .product h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .product .price {
+            font-size: 20px;
+            color: #d9534f;
+            margin-bottom: 15px;
+        }
+
+        .product button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #218838;
+        }
+
+        /* Kontak Section */
+        #kontak {
+            background-color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        #kontak h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        #kontak p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            justify-items: center;
+        }
+
+        .contact-item {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 40px;
+            color: #d9534f;
+            margin-bottom: 15px;
+        }
+
+        .contact-item h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .contact-item p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        /* Keranjang Belanja */
+        #cart {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            display: none; /* Sembunyikan keranjang secara default */
+        }
+
+        #cart h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #cart .cart-item {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        #cart .total {
+            font-size: 20px;
+            color: #d9534f;
+            margin-top: 20px;
+        }
+
+        #cart button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        #cart button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            #produk {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header nav ul {
+                flex-direction: column;
+            }
+
+            header nav ul li {
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Tambahan untuk memperhalus efek hover pada gambar */
+        .owner-img:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#profile">Profil Perusahaan</a></li>
+                <li><a href="#owner-profile">Profil Pemilik</a></li>
+                <li><a href="#produk">Menu</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+                <li>
+    <a href="#" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+    </a>
+</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Welcome to Dien's Bakery</h1>
+        <p>Rasakan kelezatan roti yang sedang trend!</p>
+    </section>
+
+    <!-- Profil Perusahaan -->
+    <section id="profile">
+        <h2>Tentang Kami</h2>
+        <img src="https://static.vecteezy.com/system/resources/previews/021/121/135/original/bread-logo-bakery-and-pastry-shop-logo-illustration-vector.jpg" alt="Logo Perusahaan" class="profile-img">
+        <p>Dien's Bakery adalah perusahaan yang berfokus pada pembuatan roti, kue, dan pastry berkualitas tinggi dengan cita rasa autentik dan inovasi modern. Kami berkomitmen untuk menghadirkan produk yang lezat, sehat, dan dibuat dengan bahan-bahan terbaik. Dan tentu update pada setiap trend yang ada!</p>
+    </section>
+
+    <!-- Profil Pemilik -->
+    <section id="owner-profile">
+        <h3>Profil Pemilik</h3>
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <img src="din.jpg" alt="Pemilik Toko" class="owner-img">
+            <p>Dien's Bakery didirikan oleh <strong>Adinda Cahya Vebriana</strong>, Mahasiswi Universitas Yatsi Madani tidak hanya dikenal sebagai individu yang berintegritas dan berorientasi pada pengembangan diri, tetapi juga memiliki semangat kewirausahaan yang tinggi. Salah satu contohnya adalah berwirausaha "Dien's Bakery."</span></p>
+        </div>
+        <div style="animation: fadeIn 1s ease-in-out;">
+            <p style="font-size: 18px; font-style: italic; color: #888; max-width: 800px; margin: 0 auto;">
+                "Dien's Bakery bukan hanya sekadar bakery, melainkan pengalaman rasa yang tak terlupakan."
+            </p>
+        </div>
+    </section>
+
+    <!-- Daftar Produk -->
+    <section id="produk">
+        <h3>Menu : </h3>
+        <div class="product">
+            <img src="https://th.bing.com/th/id/R.f1423432e2512c7dcae1ecf74118f54a?rik=0yHb6gZO3mW49A&riu=http%3a%2f%2fthelistlove.com%2fwp-content%2fuploads%2f2015%2f06%2fdoughnuts.jpg&ehk=tK6qrPvVdYqxfcyR8j3MIpSrOSDbo%2fU2WUB%2bCHmHcdA%3d&risl=&pid=ImgRaw&r=0" alt="Donat Mix">
+            <h3>Donat Mix</h3>
+            <p>Donat dengan topping manis yang pas di lidah.</p>
+            <p class="price">Rp 19.999</p>
+            <button class="add-to-cart" onclick="addToCart('Donat Mix', 19999)">Tambah ke Keranjang</button>
+        </div>
+        <div class="product">
+            <img src="https://www.galbani.fr/wp-content/uploads/2017/07/Croissants-sucr%C3%A9s_153415341-2.jpeg" alt="Croissant">
+            <h3>Croissant</h3>
+            <p>Pastry dengan tekstur luar yang renyah dan lembut di dalamnya.</p>
+            <p class="price">Rp 24.599</p>
+            <button class="add-to-cart" onclick="addToCart('Croissant', 24599)">Tambah ke Keranjang</button>
+        </div>
+    </section>
+
+    <!-- Keranjang Belanja -->
+    <section id="cart">
+        <h2>        Keranjang Belanja</h2>
+        <div id="cart-items"></div>
+        <div class="total" id="cart-total">Total: Rp 0</div>
+        <button onclick="checkout()">Checkout</button>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak">
+        <h2>Kontak Kami</h2>
+        <p>Jika Anda memiliki pertanyaan atau ingin bekerja sama dengan kami, silakan hubungi kami melalui informasi di bawah ini:</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <h4>Telepon</h4>
+                <p>+62 812-3456-7890</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h4>Email</h4>
+                <p>info@diensbakery.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4>Alamat</h4>
+                <p>Jl. Ahmad Yani No. 13, Tangerang, Indonesia</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Dien's Bakery. Semua hak cipta dilindungi.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(productName, productPrice) {
+            cart.push({ name: productName, price: productPrice });
+            totalPrice += productPrice;
+            document.getElementById('cart-count').innerText = cart.length;
+            alert(productName + " telah ditambahkan ke keranjang!");
+        }
+
+        function toggleCart() {
+            const cartSection = document.getElementById('cart');
+            if (cartSection.style.display === "none" || cartSection.style.display === "") {
+                cartSection.style.display = "block";
+                displayCartItems();
+            } else {
+                cartSection.style.display = "none";
+            }
+        }
+
+        function displayCartItems() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = ""; // Clear previous items
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerText = item.name + " - Rp " + item.price;
+                cartItemsDiv.appendChild(itemDiv);
+            });
+            document.getElementById('cart-total').innerText = "Total: Rp " + totalPrice;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Keranjang Anda kosong!");
+                return;
+            }
+            alert("Terima kasih telah berbelanja! Total belanja Anda adalah Rp " + totalPrice);
+            // Reset cart
+            cart = [];
+            totalPrice = 0;
+            document.getElementById('cart-count').innerText = 0;
+            document.getElementById('cart').style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
+           
